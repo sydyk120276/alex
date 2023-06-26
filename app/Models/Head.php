@@ -1,0 +1,44 @@
+<?php
+
+namespace App\Models;
+
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
+class Head extends Model
+{
+    // use Sluggable;
+
+    protected $fillable = ['title', 'descr', 'keywords'];
+
+
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    // public function sluggable(): array
+    // {
+    //     return [
+    //         'slug' => [
+    //             'source' => 'title'
+    //         ]
+    //     ];
+    // }
+
+    public function getImage()
+    {
+        if (!$this->thumbnail) {
+            return asset("no-image.jpg");
+        }
+        return asset("uploads/{$this->thumbnail}");
+    }
+    public function getPostDate()
+    {
+        return Carbon::createFromFormat('Y-m-d H:i:s', $this->created_at)->format('d F, Y');
+    }
+}

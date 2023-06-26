@@ -46,7 +46,10 @@ html {
 
 a {
   text-decoration: none !important;
-  color: #fff !important;
+
+}
+a:hover {
+  opacity: 0.7;
 }
 
 ul {
@@ -80,8 +83,11 @@ h2 {
   line-height: 42px;
   font-weight: 700 !important;
   margin-bottom: 40px !important;
+  color: var(--text-color);
 }
-
+b {
+  color: var(--text-color);
+}
 h1 {
   margin: 0;
 }
@@ -99,7 +105,7 @@ label {
 
 [data-theme=dark] {
   --bg-color: #131B1F; 
-  --text-color: #FFFFFF;
+  --text-color: #F2F6F9;
   --secondary-bg: #243137;
 }
 
@@ -1392,7 +1398,7 @@ textarea {
   font-size: 16px;
   line-height: 19px;
   font-weight: 500;
-  color: var(--text-color) !important;
+  color: white;
 }
 @media (max-width: 768px) {
   .footer__bottom-text {
@@ -1412,3 +1418,60 @@ textarea {
 }
 
 /* footer*//*# sourceMappingURL=style.css.map */
+
+.news {
+  background: var(--bg-color);
+  padding-top: 110px;
+  margin-top: -79px;
+}
+.news__content {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  align-items: center;
+} 
+.news__content-box {
+  min-height: 400px;
+  box-shadow: 0px 0px 30px #42BDEB;
+  padding: 10px;
+}
+.news__content-box-img {
+  height: 300px;
+  margin-bottom: 30px;
+}
+.news__content-box-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.news-page {
+  background: var(--bg-color);
+  padding: 110px 0 50px 0;
+  margin-top: -79px;
+}
+.news__content-box ul span {
+  color: var(--text-color) !important;
+  font-size: 12px;
+}
+
+.news__content-box-link {
+  font-weight: 700;
+  color: var(--text-color) !important;
+  font-size: 12px;
+}
+.news__content-box-title {
+  margin: 50px 0;
+}
+
+.page-item.active .page-link {
+  color: var(--text-color) !important;
+  background: var(--bg-color) !important;
+}
+.page-link {
+  color: black !important;
+}
+
+.clearfix {
+  padding-bottom: 30px;
+}

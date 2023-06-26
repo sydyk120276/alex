@@ -18,7 +18,7 @@ class AboutController extends Controller
      */
     public function index()
     {
-        $abouts = About::all();
+        $abouts = count(About::all()) === 0 ? [] : About::all();
         return view('admin.abouts.index', compact('abouts'));
     }
 

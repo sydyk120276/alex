@@ -65,26 +65,38 @@ if (animItems.length > 0) {
   }, 300)
 }
 
-window.addEventListener('scroll', function() {
-  var sidebarLinks = document.getElementsByClassName('sidebar-link');
-  var sections = document.getElementsByTagName('section');
-  
-  for (var i = 0; i < sections.length; i++) {
-      var section = sections[i];
-      var position = section.getBoundingClientRect();
-      
-      // Проверяем, если секция находится в видимой области
-      if (position.top <= window.innerHeight && position.bottom >= 0) {
-          // Удаляем класс активной ссылки у всех элементов
-          for (var j = 0; j < sidebarLinks.length; j++) {
-              sidebarLinks[j].classList.remove('sidebar-link-1-active');
-          }
-          
-          // Добавляем класс активной ссылки к нужной секции
-          sidebarLinks[i].classList.add('sidebar-link-1-active');
-      }
+var sidebarLinks = document.getElementsByClassName('sidebar-link');
+var sections = document.getElementsByTagName('section');
+
+function updateActiveLink() {
+  var currentSectionIndex = 0;
+  var currentSectionPosition = sections[0].offsetTop - window.innerHeight / 2;
+
+  for (var i = 1; i < sections.length; i++) {
+    var sectionPosition = sections[i].offsetTop - window.innerHeight / 2;
+
+    if (window.scrollY >= currentSectionPosition && window.scrollY < sectionPosition) {
+      currentSectionIndex = i - 1;
+      break;
+    }
+
+    currentSectionPosition = sectionPosition;
   }
-});
+
+  for (var j = 0; j < sidebarLinks.length; j++) {
+    sidebarLinks[j].classList.remove('sidebar-link-1-active');
+  }
+
+  sidebarLinks[currentSectionIndex].classList.add('sidebar-link-1-active');
+}
+
+function onScroll() {
+  requestAnimationFrame(updateActiveLink);
+}
+
+window.addEventListener('scroll', onScroll);
+
+
 
 // Получаем ссылку на кнопку
 var themeToggleBtn = document.querySelector('.theme-toggle');

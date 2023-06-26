@@ -41,7 +41,7 @@
                      After a while, Phil thought it would be nice to take a week-long trip to Central Asia and meet his
                      online coworker. That week soon turned into two full years of Phil and Adi building something really special. The result? Axel. 
                  </span>
-                 <a href="https://axelhub.com/aboutus">View More</a>          
+                 <a href="#">View More</a>          
              </div>
          </div>
          <div class="col-lg-5">
